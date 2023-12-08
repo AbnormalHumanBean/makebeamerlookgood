@@ -1,0 +1,96 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{makebeamerlookgood}[]
+
+% required packages
+\RequirePackage{graphicx}
+\RequirePackage{fontspec}
+\RequirePackage{listings}
+\RequirePackage{calc}
+\RequirePackage{microtype}
+\RequirePackage{etoolbox}
+\RequirePackage{underscore}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins}
+
+\newbox\kmbmr@tmpboxa
+\newbox\kmbmr@tmpboxb
+
+\usefonttheme{professionalfonts}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{mine_colors}
+
+\setbeamercolor*{background canvas}{bg=gray33}
+\setbeamercolor*{normal text}{fg=whiteee}
+\setbeamercolor*{alerted text}{fg=ttu_red}
+\setbeamercolor*{structure}{fg=ttu_red}
+
+\setbeamercolor*{title}{fg=whiteee}
+\setbeamercolor*{frametitle}{fg=ttu_red}
+
+\setbeamercolor*{itemize item}{fg=ttu_red}
+\setbeamercolor*{enumerate item}{fg=ttu_red}
+\setbeamercolor*{headline}{fg=whiteee}
+
+%%%
+
+\def\familydefault{\ttdefault}
+\setbeamersize{text margin left=1mm,text margin right=1mm}
+
+%\setbeamerfont{alerted text}{series=\bfseries}
+%\setbeamerfont{structure}{series=\bfseries}
+\setbeamerfont{title}{size=\normalsize}
+\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamerfont{block title}{size=\normalsize}
+%\setbeamerfont{footline}{size*={5}{\z@},series=\bfseries}
+\setbeamerfont{headline}{size*={6}{\z@}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useoutertheme[width=.12\paperwidth]{sidebar}
+\setbeamertemplate{sidebar left}{\insertverticalnavigation{\beamer@sidebarwidth}}
+
+
+\setbeamertemplate{itemize item}{*}
+\setbeamertemplate{itemize subitem}{*}
+\setbeamertemplate{itemize subsubitem}{*}
+\setbeamertemplate{frametitle}{{\usebeamercolor[fg]{normal text}\hspace{4mm}\boldmath\insertframetitle}\par\noindent\textcolor{ttu_red}{\dotfill}}
+
+
+
+\setbeamertemplate{headline}{\setbox\kmbmr@tmpboxa\hbox{\inserttitle}
+	\setbox\kmbmr@tmpboxb\hbox{\boldmath\insertframenumber$/$\inserttotalframenumber}\ht\kmbmr@tmpboxa=2mm\dp\kmbmr@tmpboxa=0mm
+	\ht\kmbmr@tmpboxb=2mm\dp\kmbmr@tmpboxb=0mm
+	\vspace{2mm}
+	\hspace{4mm}\noindent\box\kmbmr@tmpboxa\hfill\box\kmbmr@tmpboxb\hspace{4mm}
+	\vskip 2mm}
+
+%\setbeamertemplate{footline}[frame number]{}
+%\setbeamertemplate{title page}{\usebeamercolor{section in head/foot}{fg=grey33}\usebeamercolor{subsection in head/foot}{fg=grey33} \inserttitle \
+	%\insertauthor \
+%	\insertinstution}
+%
+ % \ifx\insertsubtitle\@empty\else\\>\hbox{}>\hbox{}> {\usebeamerfont{title}\usebeamercolor[fg]{title}\insertsubtitle}\fi~\\[1em]
+%  Name: \insertauthor\ \ifx\insertinstitute\@empty\else(\insertinstitute)\fi\\
+%  Date: \insertdate
+ % \renewcommand\thefootnote{\arabic{footnote}}
+%  \setcounter{footnote}{0}
+%}
+%\setbeamertemplate{sections/subsections in toc}[sections numbered]{}
+
+
+
+
+
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{qed symbol}{}
+
+\setlength{\leftmargini}{2.0em}
+\setlength{\leftmarginii}{3.0em}
+\setlength{\leftmarginiii}{4.5em}
+\setlength{\leftmarginiv}{5.0em}
+\setlength{\leftmarginv}{5.5em}
+\setlength{\leftmarginvi}{6.0em}
+
+\mode<all>
