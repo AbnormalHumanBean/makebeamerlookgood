@@ -1,0 +1,134 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Example for makebeamerbetter 
+
+\documentclass[aspectratio=1610]{beamer}
+% Aspect ratio can be changed here. It is set to my abnormal screen size. 
+
+\usepackage{graphicx} 
+\usepackage{xcolor}
+
+\usepackage{makebeamerlookgood}
+% The package itself(Currently must be installed on own system)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{adfbullets}
+\usepackage{fontawesome}
+
+% For many different bullet points
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{soul} 
+\usepackage{tcolorbox,mathtools}
+\usepackage{tikz}
+% For creating highlights and annotating eqautions
+
+\usepackage{annotate-equations}
+\usetikzlibrary{arrows.meta, calc, quotes, tikzmark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% For creating high lights. Can change to any color
+\definecolor{lightblue}{rgb}{.90,.95,1}
+\sethlcolor{yellow}
+\renewcommand<>{\hl}[1]{\only#2{\beameroriginal{\hl}}{#1}}
+\makeatletter
+\newcommand\SoulColor{%
+	\let\set@color\beamerorig@set@color
+	\let\reset@color\beamerorig@reset@color}
+\makeatother
+\SoulColor
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Here is the information needed for the title page 
+\title{Title: With super long subtitle because economists can pick short titles}
+\author{Your Name}
+\date{\today}
+\institute{Texas Tech University}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Optional Font changes
+
+%\usepackage{sourcecodepro}
+
+
+%\usepackage[mathrm=sym]{unicode-math}
+%\setmathfont{Fira Math}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%to change the annonations of equations
+	\tikzset{annotate equations/arrow/.style={<-}}
+	\tikzset{annotate equations/arrow/.style=red}
+	
+	% To make a new item type for that specfic item
+	\newcommand{\then}{\item[\faArrowCircleRight]}
+	
+	\begin{frame}[plain]
+		\hspace*{-.75\beamersidebarwidth}\begin{minipage}{\textwidth}	\large{\inserttitle} \\
+			\textcolor{ttu_red}{\dotfill}	\\
+			\normalsize{\insertauthor} \\
+			\normalsize{\insertinstitute}
+		\end{minipage}
+	\end{frame}
+	
+\section{Here}
+	
+	\begin{frame}{Title of Slide}
+		\begin{itemize}
+			\setlength\itemsep{1em}
+			\item[\ding{108}] an Item 
+			\item[\ding{108}] another item  
+			\begin{itemize}
+				\setlength\itemsep{.75em}
+				\item[\ding{108}] These are under those
+				\item[\ding{108}] Here's some math $Corr(\varepsilon ,\mu) \neq 0$ 
+				\end{itemize}
+		\end{itemize}
+	\end{frame}
+	
+\section{Examples}
+\subsection{Table}
+	
+	\begin{frame}{Example Table}
+		\begin{table}
+			{\renewcommand{\arraystretch}{1.4}%
+				\begin{tabular}{l}
+					\hline
+					\hline
+					\strong{Headline} \\
+					\hline	
+				a line  \\
+			a new line \\
+			this is what it looks it like \\
+			Another item \\
+					\hline
+					\hline
+			\end{tabular}}
+		\end{table}
+	\end{frame}
+	
+\subsection{Math Example}
+
+\begin{frame}{Math}
+	\begin{equation*}
+		\eqnmark{c}{B_{ijt}} = \alpha + \beta \eqnmark{d}{\mathbb{I} [VI \times supplies\ owner \ firm]_{ijt}} + \gamma_{ij} + \delta_t + \varepsilon_{ijt} \tag{3}
+	\end{equation*}
+	\visible<2>{\annotate[yshift=1em]{above}{c}{this here}}
+	\visible<2>{\annotate[yshift =-1em]{below}{d}{This here}}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+	
+	\begin{itemize}
+		\then Conclusion 1
+		\then Conclusion 2 
+		\then Conclusion 3
+		\then Conclusion 4
+	\end{itemize}
+	
+\end{frame}
+
+\end{document}
